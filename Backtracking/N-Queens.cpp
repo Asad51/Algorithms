@@ -12,22 +12,22 @@ public:
 		s = 0;
 	}
 
-	bool isSafe(int board[MAX_VAL][MAX_VAL], int row, int col, int n){
+	bool isSafe(int grid[MAX_VAL][MAX_VAL], int row, int col, int n){
 		//checking left side of same row
 		for(int i=col-1; i>=0; i--){
-			if(board[row][i])
+			if(grid[row][i])
 				return false;
 		}
 
 		//checking left side upper diagonal
 		for(int i = row - 1, j = col -1 ; i>=0 && j>=0; i--, j--){
-			if(board[i][j])
+			if(grid[i][j])
 				return false;
 		}
 
 		//checking left side lower diagonal
 		for(int i = row + 1, j = col -1 ; i<n && j>=0; i++, j--){
-			if(board[i][j])
+			if(grid[i][j])
 				return false;
 		}
 
@@ -45,17 +45,17 @@ public:
 		}
 	}
 
-	void solveQueens(int board[MAX_VAL][MAX_VAL], int col, int n){
+	void solveQueens(int grid[MAX_VAL][MAX_VAL], int col, int n){
 		if(col>=n){
 			printSolution();
 			return;
 		}
 		for(int i=0; i<n; i++){
-			if(isSafe(board, i, col, n)){
+			if(isSafe(grid, i, col, n)){
 				pos[i] = make_pair(i, col);
-				board[i][col] = 1;
-				solveQueens(board, col + 1, n);
-				board[i][col] = 0;
+				grid[i][col] = 1;
+				solveQueens(grid, col + 1, n);
+				grid[i][col] = 0;
 			}
 		}
 	}
@@ -66,7 +66,7 @@ int main(int argc, char const *argv[])
 	ios::sync_with_stdio(0);
     cin.tie(NULL);
     nQueens nq(MAX_VAL);
-    int board[MAX_VAL][MAX_VAL] = {
+    int grid[MAX_VAL][MAX_VAL] = {
     	{0, 0, 0, 0, 0, 0}, 
     	{0, 0, 0, 0, 0, 0}, 
     	{0, 0, 0, 0, 0, 0}, 
@@ -74,8 +74,8 @@ int main(int argc, char const *argv[])
     	{0, 0, 0, 0, 0, 0}, 
     	{0, 0, 0, 0, 0, 0}
     };
-    /*int board[MAX_VAL][MAX_VAL] = {{0, 0}, {0, 0}};*/
-    nq.solveQueens(board, 0, MAX_VAL);
+    /*int grid[MAX_VAL][MAX_VAL] = {{0, 0}, {0, 0}};*/
+    nq.solveQueens(grid, 0, MAX_VAL);
     if(!nq.printNoSolution())
     	cout<<"No Solution"<<endl;
 	return 0;

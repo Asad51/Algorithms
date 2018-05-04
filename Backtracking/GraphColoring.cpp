@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
 	ios::sync_with_stdio(0);
     cin.tie(NULL);
     freopen("in.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
+    //freopen("out.txt", "w", stdout);
     int u, v, n, e;
     vector< vector<int> > graph;
     cin>>n>>e;
