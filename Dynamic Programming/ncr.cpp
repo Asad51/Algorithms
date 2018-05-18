@@ -3,6 +3,8 @@ using namespace std;
 typedef long long ll;
 
 int ncr(int n, int r){
+	if(j>i)
+		return 0;
 	ll arr[n+1][r+1];
 	for(int i=0; i<=n; i++)
 		arr[i][0] = 1;
