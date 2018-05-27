@@ -32,7 +32,7 @@ public:
 
 	void pop(){
 		if(current==NULL){
-			cout<<"Overflow\n";
+			cout<<"Underflow\n";
 			return;
 		}
 		Node *tmp = current->prev;
@@ -42,6 +42,10 @@ public:
 	}
 
 	int top(){
+		if(!siz){
+			cout<<"Stack is empty\n";
+			return -1;
+		}
 		return current->val;
 	}
 

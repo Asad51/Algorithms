@@ -35,6 +35,10 @@ public:
     }
     
     int top(){
+        if(!siz){
+            cout<<"Stack is empty\n";
+            return arr[-1];
+        }
         return arr[index];
     }
     

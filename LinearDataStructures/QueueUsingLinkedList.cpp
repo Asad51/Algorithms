@@ -43,6 +43,10 @@ public:
 	}
 
 	int top(){
+		if(!siz){
+			cout<<"Queue is empty\n";
+			return -1;
+		}
 		return front->val;
 	}
 
