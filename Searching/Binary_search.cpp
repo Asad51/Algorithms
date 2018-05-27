@@ -37,7 +37,7 @@ int main(){
 		cout<<"Not Found"<<endl;
 
 	//built-in
-	if(binary_search(arr, arr+size, key))
+	if(binary_search(arr, arr+size, key) - arr)
 		cout<<"Found"<<endl;
 	else
 		cout<<"Not Found"<<endl;
