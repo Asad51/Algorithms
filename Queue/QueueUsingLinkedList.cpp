@@ -69,7 +69,7 @@ int main(int argc, char const *argv[])
 	}
 	cout<<q.size()<<endl;
 	while(!q.empty()){
-		cout<<q.top()<<" ";
+		cout<<q.top()<<" " << q.size() << endl;
 		q.pop();
 	}
 	return 0;
