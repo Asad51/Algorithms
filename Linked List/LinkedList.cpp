@@ -18,7 +18,7 @@ template <class T>
 class List
 {
     int sz;
-    Node<T> *head, *current;
+    Node<T> *head, *current, *nextNode;
 
 public:
     List();
@@ -29,6 +29,7 @@ public:
     void removeAt(int pos);
     int size();
     bool find(T key);
+    T next();
     void print();
     ~List();
 };
@@ -38,7 +39,7 @@ template <class T>
 List<T>::List()
 {
     sz = 0;
-    current = head = NULL;
+    current = head = nextNode = NULL;
 }
 /**
  * Constructor function
@@ -64,6 +65,7 @@ void List<T>::insert(T v)
     if (!head)
     {
         head = node;
+        nextNode = head;
         return;
     }
     current = head;
@@ -96,8 +98,9 @@ void List<T>::insert(T v, int index)
     current = head;
     if (!index)
     {
-        node->next = current;
-        head->next = node;
+        node->next = head;
+        head = node;
+        sz++;
         return;
     }
     if (sz == index)
@@ -195,6 +198,20 @@ bool List<T>::find(T key)
     }
     return false;
 }
+
+template< class T>
+T List<T>::next()
+{
+    if (!nextNode)
+        nextNode = head;
+    int v = nextNode->val;
+    if (nextNode->next)
+        nextNode = nextNode->next;
+    else
+        nextNode = NULL;
+    return v;
+}
+
 /** Return the size of the list**/
 template <class T>
 int List<T>::size()
@@ -227,7 +244,7 @@ int main(int argc, char const *argv[])
     List<int> list;
     for (int i = 1; i <= 5; i++)
         list.insert(i);
-    //list.removeAt(5);
+    list.insert(10, 0);
     list.print();
     //cout << list.size() << " " << list.find(8) << endl;
     return 0;
